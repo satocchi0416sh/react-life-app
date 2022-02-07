@@ -14,7 +14,6 @@ import Income from "./income"
 import "./infoballoon.css"
 import { Button, Grid } from "@material-ui/core";
 import { ContactMail, Info } from "@mui/icons-material";
-import { Stack } from "@mui/material";
 import { Box } from "@mui/system";
 
 function ApplicationHome() {
@@ -524,6 +523,125 @@ function ApplicationHome() {
         }))
     }
 
+    const [nameFilled, setNameFilled] = useState(false);
+    const [mailFilled, setMailFilled] = useState(false);
+    const [ageFilled, setAgeFilled] = useState(false);
+    const [taxincomeFilled, setTaxincomeFilled] = useState(false);
+    const [pentionFilled, setPentionFilled] = useState(false);
+    const [savingFilled, setSavingFilled] = useState(false);
+    const [payFilled, setPayFilled] = useState(false);
+    const [pay65Filled, setPay65Filled] = useState(false);
+
+    useEffect(() => {
+        if (name !== "")
+            setNameFilled(true)
+        else
+            setNameFilled(false)
+        console.log(nameFilled);
+    }, [name]);
+    useEffect(() => {
+        if (email !== "")
+            setMailFilled(true)
+        else
+            setMailFilled(false)
+        console.log(mailFilled);
+    }, [email]);
+    useEffect(() => {
+        if (age !== "")
+            setAgeFilled(true)
+        else
+            setAgeFilled(false)
+        console.log(ageFilled);
+    }, [age]);
+    useEffect(() => {
+        if (taxIncome !== "")
+            setTaxincomeFilled(true)
+        else
+            setTaxincomeFilled(false)
+        console.log(taxincomeFilled);
+    }, [taxIncome]);
+    useEffect(() => {
+        if (pension !== "")
+            setPentionFilled(true)
+        else
+            setPentionFilled(false)
+        console.log(pentionFilled);
+    }, [pension]);
+    useEffect(() => {
+        if (saving !== "")
+            setSavingFilled(true)
+        else
+            setSavingFilled(false)
+        console.log(savingFilled);
+    }, [saving]);
+    useEffect(() => {
+        if (pay !== "")
+            setPayFilled(true)
+        else
+            setPayFilled(false)
+        console.log(payFilled);
+    }, [pay]);
+    useEffect(() => {
+        if (pay65 !== "")
+            setPay65Filled(true)
+        else
+            setPay65Filled(false)
+        console.log(pay65Filled);
+    }, [pay65]);
+
+
+    const ErrorMessages = ({ param }) => {
+        if (param === "name") {
+            if (!nameFilled)
+                return <p style={{ color: "red" }}>※お名前は必須項目です</p>
+            else
+                return null
+        }
+        else if (param === "mail") {
+            if (!mailFilled)
+                return <p style={{ color: "red" }}>※メールアドレスは必須項目です</p>
+            else
+                return null
+        }
+        else if (param === "age") {
+            if (!ageFilled)
+                return <p style={{ color: "red" }}>※年齢は必須項目です</p>
+            else
+                return null
+        }
+        else if (param === "taxincome") {
+            if (!taxincomeFilled)
+                return <p style={{ color: "red" }}>※税込年収は必須項目です</p>
+            else
+                return null
+        }
+        else if (param === "pension") {
+            if (!pentionFilled)
+                return <p style={{ color: "red" }}>※年金は必須項目です</p>
+            else
+                return null
+        }
+        else if (param === "saving") {
+            if (!savingFilled)
+                return <p style={{ color: "red" }}>※現在貯蓄額は必須項目です</p>
+            else
+                return null
+        }
+        else if (param === "pay") {
+            if (!payFilled)
+                return <p style={{ color: "red" }}>※65歳までの月々の生活費は必須項目です</p>
+            else
+                return null
+        }
+        else if (param === "pay65") {
+            if (!pay65Filled)
+                return <p style={{ color: "red" }}>※65歳以降の月々の生活費は必須項目です</p>
+            else
+                return null
+        }
+        else
+            return null
+    }
     const pages = ['input1', 'caluculation1', 'transition', 'transition2', 'contact']
     /*ページの分岐 */
     let page;
@@ -629,7 +747,7 @@ function ApplicationHome() {
             <h2>配偶者の有無</h2>
             <div className="buttons">
                 <button className="btn btn-border" onClick={() => { setHasWife(1) }}>いる</button>
-                <button className="btn btn-border" onClick={() => { 
+                <button className="btn btn-border" onClick={() => {
                     setHasWife(0)
                     setWifeAge(0)
                     setWifeTaxIncome(0)
@@ -727,8 +845,14 @@ function ApplicationHome() {
                     return (null)
                 }
             })}
-
-            <br /><br /><br /><br /><br /><br />
+            <ErrorMessages param="name" />
+            <ErrorMessages param="mail" />
+            <ErrorMessages param="age" />
+            <ErrorMessages param="taxincome" />
+            <ErrorMessages param="pension" />
+            <ErrorMessages param="saving" />
+            <ErrorMessages param="pay" />
+            <ErrorMessages param="pay65" />
         </div>
     } else if (currentPage === "caluculation1") {//<=参考計算例
         page = <div className="contents">
@@ -768,10 +892,12 @@ function ApplicationHome() {
     }, [currentPage])
 
 
+
     return (
         <div className="all-wrapper">
             <h2 className="title">将来シミュレーター</h2>
             {page}
+
             <div className="button-wrapper">
 
                 {currentPage !== 'input1'
@@ -790,7 +916,7 @@ function ApplicationHome() {
                             ?
                             <>
                                 {currentPage === "input1"
-                                    ? <button className="btn btn--yellow" onClick={() => { setCurrentPage(pages[pages.indexOf(currentPage) + 1]); getAllInfo(); }}>
+                                    ? <button className="btn btn--yellow" onClick={() => { if (nameFilled && mailFilled && ageFilled && taxincomeFilled && pentionFilled && savingFilled && payFilled && pay65Filled) setCurrentPage(pages[pages.indexOf(currentPage) + 1]); getAllInfo(); }}>
                                         次へ
                                         <i class="fas fa-chevron-right"></i>
                                     </button>
