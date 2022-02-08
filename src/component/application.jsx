@@ -537,56 +537,48 @@ function ApplicationHome() {
             setNameFilled(true)
         else
             setNameFilled(false)
-        console.log(nameFilled);
     }, [name]);
     useEffect(() => {
         if (email !== "")
             setMailFilled(true)
         else
             setMailFilled(false)
-        console.log(mailFilled);
     }, [email]);
     useEffect(() => {
         if (age !== "")
             setAgeFilled(true)
         else
             setAgeFilled(false)
-        console.log(ageFilled);
     }, [age]);
     useEffect(() => {
         if (taxIncome !== "")
             setTaxincomeFilled(true)
         else
             setTaxincomeFilled(false)
-        console.log(taxincomeFilled);
     }, [taxIncome]);
     useEffect(() => {
         if (pension !== "")
             setPentionFilled(true)
         else
             setPentionFilled(false)
-        console.log(pentionFilled);
     }, [pension]);
     useEffect(() => {
         if (saving !== "")
             setSavingFilled(true)
         else
             setSavingFilled(false)
-        console.log(savingFilled);
     }, [saving]);
     useEffect(() => {
         if (pay !== "")
             setPayFilled(true)
         else
             setPayFilled(false)
-        console.log(payFilled);
     }, [pay]);
     useEffect(() => {
         if (pay65 !== "")
             setPay65Filled(true)
         else
             setPay65Filled(false)
-        console.log(pay65Filled);
     }, [pay65]);
 
 
@@ -741,9 +733,37 @@ function ApplicationHome() {
             <br />
             <FormInput label="現在貯蓄額（万円）（必須）" type="number" value={saving} onChange={(e) => { setSaving(e.target.value) }} />
             <br />
+            <h2>支出</h2>
+            <FormInput label="65歳までの月々の生活費(万円)(必須)" type="number" value={pay} onChange={(e) => { setPay(e.target.value) }} />
+            <br />
+            <FormInput label="65歳以降の月々の生活費(万円)(必須)" type="number" value={pay65} onChange={(e) => { setPay65(e.target.value) }} />
             <br />
             <br />
-            <br />
+            {payOpen ?
+                <>
+                    <InputPay addPayList={addPayList} />
+                    {payList.map((value, index) => {
+                        if (value.id !== 0) {
+                            if (value.type !== "living" && value.type !== "living65") {
+                                return (
+                                    <Pay key={index} number={value.id} deletePayInput={deletePayInput}
+                                        type={value.type} charge={value.charge} count={value.count} type2={value.type2} editPayInput={editPayInput} />
+                                )
+                            } else {
+                                return (null)
+                            }
+
+                        } else {
+                            return (null)
+                        }
+                    })}
+                </>
+                :
+                <div className="btn-wrapper">
+                    <button className="btn btn--white" onClick={() => { setPayOpen(true) }}>さらに詳しく支出を設定する</button>
+                </div>
+            }
+            <br /><br />
             <h2>配偶者の有無</h2>
             <div className="buttons">
                 <button className="btn btn-border" onClick={() => { setHasWife(1) }}>いる</button>
@@ -803,36 +823,8 @@ function ApplicationHome() {
             })}
 
             <br /><br />
-            <h2>支出</h2>
-            <FormInput label="65歳までの月々の生活費(万円)(必須)" type="number" value={pay} onChange={(e) => { setPay(e.target.value) }} />
-            <br />
-            <FormInput label="65歳以降の月々の生活費(万円)(必須)" type="number" value={pay65} onChange={(e) => { setPay65(e.target.value) }} />
-            <br />
-            {payOpen ?
-                <>
-                    <InputPay addPayList={addPayList} />
-                    {payList.map((value, index) => {
-                        if (value.id !== 0) {
-                            if (value.type !== "living" && value.type !== "living65") {
-                                return (
-                                    <Pay key={index} number={value.id} deletePayInput={deletePayInput}
-                                        type={value.type} charge={value.charge} count={value.count} type2={value.type2} editPayInput={editPayInput} />
-                                )
-                            } else {
-                                return (null)
-                            }
 
-                        } else {
-                            return (null)
-                        }
-                    })}
-                </>
-                :
-                <div className="btn-wrapper">
-                    <button className="btn btn--white" onClick={() => { setPayOpen(true) }}>さらに詳しく支出を設定する</button>
-                </div>
-            }
-            <br /><br />
+
             <h2>退職金やその他の収入</h2>
             <InputIncome addIncomeList={addIncomeList} />
             {incomeList.map((value, index) => {
@@ -845,6 +837,8 @@ function ApplicationHome() {
                     return (null)
                 }
             })}
+            <br />
+            <br />
             <ErrorMessages param="name" />
             <ErrorMessages param="mail" />
             <ErrorMessages param="age" />
