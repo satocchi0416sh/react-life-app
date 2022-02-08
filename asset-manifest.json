@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/life-app-demo/static/css/main.a1015487.chunk.css",
+    "main.js": "/life-app-demo/static/js/main.2455bb80.chunk.js",
+    "main.js.map": "/life-app-demo/static/js/main.2455bb80.chunk.js.map",
+    "runtime-main.js": "/life-app-demo/static/js/runtime-main.e45a5a65.js",
+    "runtime-main.js.map": "/life-app-demo/static/js/runtime-main.e45a5a65.js.map",
+    "static/js/2.3c9caa5b.chunk.js": "/life-app-demo/static/js/2.3c9caa5b.chunk.js",
+    "static/js/2.3c9caa5b.chunk.js.map": "/life-app-demo/static/js/2.3c9caa5b.chunk.js.map",
+    "static/js/3.d30d7bcd.chunk.js": "/life-app-demo/static/js/3.d30d7bcd.chunk.js",
+    "static/js/3.d30d7bcd.chunk.js.map": "/life-app-demo/static/js/3.d30d7bcd.chunk.js.map",
+    "static/js/4.66fece67.chunk.js": "/life-app-demo/static/js/4.66fece67.chunk.js",
+    "static/js/4.66fece67.chunk.js.map": "/life-app-demo/static/js/4.66fece67.chunk.js.map",
+    "static/js/5.25cf3f5c.chunk.js": "/life-app-demo/static/js/5.25cf3f5c.chunk.js",
+    "static/js/5.25cf3f5c.chunk.js.map": "/life-app-demo/static/js/5.25cf3f5c.chunk.js.map",
+    "static/js/6.3f1adbfb.chunk.js": "/life-app-demo/static/js/6.3f1adbfb.chunk.js",
+    "static/js/6.3f1adbfb.chunk.js.map": "/life-app-demo/static/js/6.3f1adbfb.chunk.js.map",
+    "index.html": "/life-app-demo/index.html",
+    "static/css/main.a1015487.chunk.css.map": "/life-app-demo/static/css/main.a1015487.chunk.css.map",
+    "static/js/2.3c9caa5b.chunk.js.LICENSE.txt": "/life-app-demo/static/js/2.3c9caa5b.chunk.js.LICENSE.txt",
+    "static/js/3.d30d7bcd.chunk.js.LICENSE.txt": "/life-app-demo/static/js/3.d30d7bcd.chunk.js.LICENSE.txt",
+    "static/js/4.66fece67.chunk.js.LICENSE.txt": "/life-app-demo/static/js/4.66fece67.chunk.js.LICENSE.txt",
+    "static/js/5.25cf3f5c.chunk.js.LICENSE.txt": "/life-app-demo/static/js/5.25cf3f5c.chunk.js.LICENSE.txt",
+    "static/media/76888-color-data-analysis.540e95fe.gif": "/life-app-demo/static/media/76888-color-data-analysis.540e95fe.gif",
+    "static/media/app-bg.7528fca0.jpeg": "/life-app-demo/static/media/app-bg.7528fca0.jpeg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e45a5a65.js",
+    "static/js/2.3c9caa5b.chunk.js",
+    "static/css/main.a1015487.chunk.css",
+    "static/js/main.2455bb80.chunk.js"
+  ]
+}
